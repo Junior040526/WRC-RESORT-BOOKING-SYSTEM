@@ -1,0 +1,61 @@
+@startuml
+title WRC Haven Resort Booking System - Class Diagram
+
+class Customer {
+    - customerId: int
+    - fullName: string
+    - email: string
+    + register()
+    + login()
+    + makeBooking()
+}
+
+class Room {
+    - roomId: int
+    - roomType: string
+    - totalRooms: int
+    - pricePerNight: decimal
+    - description: string
+    + viewRooms()
+    + checkAvailability()
+}
+
+class Booking {
+    - bookingId: int
+    - checkIn: date
+    - checkOut: date
+    - guests: int
+    - roomsRequested: int
+    - totalPrice: decimal
+    - status: string
+    + createBooking()
+    + editBooking()
+    + cancelBooking()
+}
+
+class Payment {
+    - paymentId: int
+    - amount: decimal
+    - paymentMethod: string
+    - paymentStatus: string
+    - paymentReference: string
+    + processPayment()
+    + generateReceipt()
+}
+
+class Administrator {
+    - adminId: int
+    - username: string
+    - passwordHash: string
+    + login()
+    + viewBookings()
+    + updateBooking()
+    + deleteBooking()
+}
+
+Customer "1" -- "0..*" Booking : makes
+Room "1" -- "0..*" Booking : selected for
+Booking "1" -- "0..*" Payment : has
+Administrator ..> Booking : manages
+
+@enduml

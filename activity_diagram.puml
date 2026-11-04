@@ -1,0 +1,56 @@
+@startuml
+title WRC Haven Resort - Booking Activity Diagram
+
+start
+
+:Visitor opens resort website;
+:View available rooms;
+:Select room type;
+:Enter booking details;
+
+:Validate booking details;
+
+if (Details valid?) then (Yes)
+
+    :Check room availability;
+
+    if (Room available?) then (Yes)
+
+        :Calculate total price;
+        :Save booking in database;
+        :Display booking confirmation;
+
+        :Visitor opens payment page;
+        :Enter simulated card details;
+
+        :Validate payment details;
+
+        if (Payment approved?) then (Yes)
+
+            :Save payment record;
+            :Update booking status to Confirmed;
+            :Generate payment reference;
+            :Display payment receipt;
+
+        else (No)
+
+            :Display payment failure message;
+            :Allow visitor to retry payment;
+
+        endif
+
+    else (No)
+
+        :Display room unavailable message;
+
+    endif
+
+else (No)
+
+    :Display validation error;
+
+endif
+
+stop
+
+@enduml
