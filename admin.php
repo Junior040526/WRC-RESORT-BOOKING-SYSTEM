@@ -16,13 +16,13 @@ $result = $conn->query($sql);
 <style>
 body {
     font-family: Arial, sans-serif;
-    background: #f3f6f2;
-    margin: 0;
+    background: #f2f6f4;
+    margin: 1;
     padding: 20px;
 }
 
 header {
-    background: #164b35;
+    background: #0e3324;
     color: white;
     padding: 20px;
     text-align: center;
